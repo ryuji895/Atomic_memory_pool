@@ -1,6 +1,19 @@
 # Atomic_memory_pool
 
 注意、このコードはTaggedValueとTaggedValueUnionはAIのコードを元にし、すこし改造したものです。それ以外は完全自作となっています。
+警告、gotoおれめっちゃ好きだからforとか使ってません。goto絶対許せないマンの人には謝罪致します。ごめんなさい。
+
+└─$ gcc -std=gnu17 -Wall -Wextra -Wshadow -Wcast-align \
+  -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes \
+  -Werror -Wconversion -Wsign-conversion -Wno-unused-parameter \
+  -O3 -march=native -flto -fno-common -fstrict-aliasing \
+  -fno-strict-overflow -fstack-protector-strong -D_FORTIFY_SOURCE=2 \
+  -Wno-attributes -Wnull-dereference -Wdouble-promotion \
+  -Wformat=2 -Wduplicated-cond -Wduplicated-branches \
+  -Wlogical-op -Wno-psabi -Wno-pedantic -g3 -fsanitize=undefined,address \
+  -c mem.c
+因みにAIにきびしい コンパイラ引数教えてって言ったらこれが出てきて、これで通した。
+
 
 64bitのx86_64のCPUで動く前提です、必ずhaswell世代以降で使ってください、そうじゃないと、CMPXCHG16Bが使えないから
 
