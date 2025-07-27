@@ -3,16 +3,6 @@
 注意、このコードはTaggedValueとTaggedValueUnionはAIのコードを元にし、すこし改造したものです。それ以外は完全自作となっています。
 警告、gotoおれめっちゃ好きだからforとか使ってません。goto絶対許せないマンの人には謝罪致します。ごめんなさい。
 
-└─$ gcc -std=gnu17 -Wall -Wextra -Wshadow -Wcast-align \
-  -Wstrict-prototypes -Wold-style-definition -Wmissing-prototypes \
-  -Werror -Wconversion -Wsign-conversion -Wno-unused-parameter \
-  -O3 -march=native -flto -fno-common -fstrict-aliasing \
-  -fno-strict-overflow -fstack-protector-strong -D_FORTIFY_SOURCE=2 \
-  -Wno-attributes -Wnull-dereference -Wdouble-promotion \
-  -Wformat=2 -Wduplicated-cond -Wduplicated-branches \
-  -Wlogical-op -Wno-psabi -Wno-pedantic -g3 -fsanitize=undefined,address \
-  -c mem.c
-因みにAIにきびしい コンパイラ引数教えてって言ったらこれが出てきて、これで通した。
 
 
 64bitのx86_64のCPUで動く前提です、必ずhaswell世代以降で使ってください、そうじゃないと、CMPXCHG16Bが使えないから
@@ -67,5 +57,7 @@ typedef struct{
 そして、gccでコンパイル。その後objdump -d -M intel a.bin | grep cmpxchg16bで調べたところ、、、ありませんでした、
 そこで、世代に依存するという点をおもいだし、-march=native -O3をつけました、-march=nativeはいま自分がコンパイルしているCPUに最適になるようにするためのgccのコンパイラオプションです。-O3は私が少しでも早くしたいって思いです、普通は-~2で十分です。
 そうするとcmpxchg16bを召喚することが成功しました。
+
+gcc -s -O3 -march=native -masm=intel mem.cをしてmem.sをみるとわかりますが、今回の主役がはいってる__atomic_compare_exchange_16@PLTがcallされてるはずです。
 
 長々とした文章を読んでいただきありがとうございます、お力になれたら幸いです。
