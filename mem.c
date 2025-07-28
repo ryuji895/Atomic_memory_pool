@@ -44,7 +44,7 @@ void release_memory(memory_pool_t *pool,flag_t flag);//メモリを返す関数
 void init_memory_pool(memory_pool_t *pool);//ただの0埋め
 
 
-//ねむい、がっこういきたくねー。
+//かのじょほしいー
 flag_t allocate_memory(memory_pool_t *pool){
 	flag_t answer;
 	TaggedValueUnion expected_union;
