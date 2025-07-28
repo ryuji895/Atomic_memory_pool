@@ -1,9 +1,9 @@
 # Atomic_memory_pool
 
-注意、このコードはTaggedValueとTaggedValueUnionはAIのコードを元にし、すこし改造したものです。それ以外は完全自作となっています。
+注意、このコードはTaggedValueとTaggedValueUnionの部分はAIのコードを元にし、すこし改造したものです。それ以外は完全自作となっています。
 警告、gotoおれめっちゃ好きだからforとか使ってません。goto絶対許せないマンの人には謝罪致します。ごめんなさい。
 
-
+あと、初めて言語化したのでめっちゃ読みずらいです。
 
 64bitのx86_64のCPUで動く前提です、必ずhaswell世代以降で使ってください、そうじゃないと、CMPXCHG16Bが使えないから
 
