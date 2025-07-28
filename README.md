@@ -1,5 +1,7 @@
 # Atomic_memory_pool
 
+
+
 注意、このコードはTaggedValueとTaggedValueUnionの部分はAIのコードを元にし、すこし改造したものです。それ以外は完全自作となっています。
 警告、gotoおれめっちゃ好きだからforとか使ってません。goto絶対許せないマンの人には謝罪致します。ごめんなさい。
 
